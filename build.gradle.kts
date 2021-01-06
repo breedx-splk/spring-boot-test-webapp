@@ -11,5 +11,6 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web:2.4.1")
+    implementation("org.springframework.boot:spring-boot-starter-jersey:2.4.1")
     testImplementation("junit", "junit", "4.12")
 }

@@ -36,4 +36,17 @@ public class Controllers {
         return snack;
     }
 
+    @GetMapping("/bad-snack")
+    public Snack badSnack() {
+        Client client = ClientBuilder.newClient(new ClientConfig()
+                .register(LoggingFeature.class)
+                .register(JacksonFeature.class)
+        );
+        System.out.println("Let's fetch a snack...");
+        WebTarget webTarget = client.target("http://localhost:8000/").path("snacks/gravel.json");
+        Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
+        Response response = invocationBuilder.get();
+        return response.readEntity(Snack.class);
+    }
+
 }
